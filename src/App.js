@@ -1,20 +1,6 @@
 import React from 'react';
 import './App.css';
-
-const skills = [
-  'Kali Linux',
-  'Burp Suite',
-  'Nmap',
-  'React',
-  'Node.js',
-  'MongoDB',
-  'Linux',
-  'Git & GitHub',
-  'TryHackMe',
-  'Bugcrowd',
-  'OWASP ZAP',
-  'Metasploit'
-];
+import Skills from './components/Skills'; // ✅ use the canvas Skills.js
 
 const projects = [
   {
@@ -52,14 +38,7 @@ function App() {
         <p>I’ve completed labs and real-world projects on TryHackMe and Bugcrowd, and I enjoy working on offensive security, reporting CVEs, and educating developers on secure coding.</p>
       </section>
 
-      <section className="section">
-        <h2>Skills & Tools</h2>
-        <div className="skill-list">
-          {skills.map((skill, idx) => (
-            <div key={idx} className="skill-item">{skill}</div>
-          ))}
-        </div>
-      </section>
+      <Skills /> {/* ✅ now pulls circular progress UI */}
 
       <section className="section">
         <h2>Projects</h2>
@@ -79,6 +58,9 @@ function App() {
         <p>Email: <a href="mailto:mrhasanuae2021@gmail.com">mrhasanuae2021@gmail.com</a></p>
         <p>GitHub: <a href="https://github.com/mrhasan2025" target="_blank" rel="noreferrer">@mrhasan2025</a></p>
       </section>
+      <footer className="copyright-notice">
+  © {new Date().getFullYear()} Mahamudul Hasan. All rights reserved.
+</footer>
     </div>
   );
 }

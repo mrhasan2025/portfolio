@@ -9,6 +9,19 @@ body {
   color: #00ffc3;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  /* Copy protection */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Allow selection in input/textarea elements */
+input, textarea {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
 .App {
@@ -91,6 +104,12 @@ a:hover {
   box-sizing: border-box;
 }
 
+.skill-item {
+  padding: 1.2rem;
+  display: flex;
+  justify-content: center;
+}
+
 .skill-item:hover, .project-card:hover {
   background: #1e1e1e;
   transform: scale(1.03);
@@ -110,30 +129,19 @@ a:hover {
 }
 
 /* ===== Typewriter Effect ===== */
-/* ===== Fixed Typewriter Effect ===== */
 .typewriter {
   border-right: 0.15em solid #00ffc3;
   white-space: nowrap;
   margin: 0 auto;
-  letter-spacing: 0.1em; /* Reduced from 0.15em */
+  letter-spacing: 0.1em;
   overflow: hidden;
   display: inline-block;
-  max-width: 100%; /* Changed from 95vw */
+  max-width: 100%;
   color: #00ffaa;
-  font-size: clamp(0.9rem, 3vw, 1.3rem); /* Responsive font size */
+  font-size: clamp(0.9rem, 3vw, 1.3rem);
   text-align: center;
   box-sizing: border-box;
-  padding: 0 0.5rem; /* Added padding */
-}
-
-/* Animation for smaller screens */
-@media (max-width: 768px) {
-  .typewriter {
-    white-space: normal; /* Allows text to wrap on small screens */
-    border-right: none; /* Remove cursor on mobile */
-    animation: none; /* Disable animation on mobile */
-    letter-spacing: normal;
-  }
+  padding: 0 0.5rem;
 }
 
 .typewriter:hover {
@@ -150,6 +158,16 @@ a:hover {
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: #00ffcc; }
+}
+
+/* Animation for smaller screens */
+@media (max-width: 768px) {
+  .typewriter {
+    white-space: normal;
+    border-right: none;
+    animation: none;
+    letter-spacing: normal;
+  }
 }
 
 /* ===== Tool Details ===== */
@@ -173,6 +191,53 @@ a:hover {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Progress Elements ===== */
+.progress-circle {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1rem;
+}
+
+.progress-circle svg {
+  width: 70px;
+  height: 70px;
+  transform: rotate(-90deg);
+}
+
+.progress-circle circle {
+  fill: none;
+  stroke-width: 4;
+  stroke: #333;
+}
+
+.progress-circle circle:nth-child(2) {
+  stroke: #00ffc3;
+  stroke-dasharray: 188.4;
+  stroke-dashoffset: 188.4;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.loader {
+  width: 70px;
+  height: 70px;
+  border: 4px solid #00ffc3;
+  border-top: 4px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.progress-label {
+  text-align: center;
+  color: #00ffaa;
 }
 
 /* ===== Mobile Specific Adjustments ===== */
@@ -199,4 +264,12 @@ a:hover {
     padding: 2rem;
     margin: 1.5rem auto;
   }
+}
+
+/* ===== Footer/Copyright ===== */
+.copyright-notice {
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: #666;
+  text-align: center;
 }
